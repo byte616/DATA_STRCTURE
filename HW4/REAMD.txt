@@ -1,0 +1,93 @@
++ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
++                   Data Structure Assignment IV                +
++                        Binary Search Tree                     +
++ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +  
+
+Problem 1. Binary Search Tree Implementation using linked lists
+
+- Description
+
+Use linked list to implement binary search tree. In this Problem
+we should implement four functions: Insert, Delete, and two kinds 
+of travesal: Infixorder and Levelorder. 
+
+- Solution
+
+Use linked list to build the binary search tree, we can create a
+new type to save every node's data and his leftchild and 
+rightchild's pointer.
+
+- Search -
+
+Search function is important for BST's building. In insert function, 
+it can help find the objective destination's previous position. In 
+delete function, it can find the delete position and record it's
+previous node.
+
+- Insert -
+
+Insert the node to the BST. There are several cases to implement. 
+First, if the BST didn't have root, make the insert node be the 
+root. If the root is exist, insert the node to the correct position.
+(previous node's leftchild or rightchild)
+
+- Delete -
+
+Delete a node from the BST. There are four cases to implement.
+1. the node is leaf:
+   - delete the node directively and make the previous node point to NULL
+2. the node has only right child:
+   - connect the right subtree and previous node, then delete the node
+3. the node has only left child:
+   - connect the left subtree and previous node, then delete the node
+4. both side have child:
+   - find right subtree's most smallest element E
+   - delete E by recursive
+   - change the delete node's value to E's data
+
+- Inorder Travesal -
+
+Check the node is not NULL, and search left side first, then print the 
+node's data, finally search right side.
+
+                 N  (order:LNR)
+                / \
+               L   R
+
+- Levelorder Travesal -
+
+Implement queue to excute BFS and travel the node level by level from 
+root.
+            
+                 N  (order:NLR)
+                / \
+               L   R
+
+
+==================================================================
+
+Problem 2. Treasure Hunter
+
+- Description
+
+Build a BST and give you key and treasure's value. Find a path 
+starting from root to get the key first then arrive treasure.
+
+- Solution
+
+In this problem, we also need to implement BST basic function.
+Insert and Search has introduced below, now we need to write a
+function to find the path.
+
+- Path -
+
+Find each path from the root to key and treasure. Record every 
+value you passed in the array. Then, compare two array's path,
+find the longest path from the root, this segment means we don't
+need to travel again(assume that the last element in the segment
+called ankle point).
+
+The final answer will be:
+   - root -> key 
+   - key -> the ankle point
+   - ankle point -> treasure
